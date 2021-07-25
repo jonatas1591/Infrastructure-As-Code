@@ -1,0 +1,13 @@
+/* Empty CSS file for your own CSS*/
+
+body {
+    background: #c4c1c1 !important;
+}
+
+.row{
+    color:#000000;
+}
+
+table table-bordered{
+    border: 1px solid black;
+}
