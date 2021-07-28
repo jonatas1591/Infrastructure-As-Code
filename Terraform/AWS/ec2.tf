@@ -11,7 +11,7 @@ data "aws_ami" "amazonami" {
 
 resource "aws_key_pair" "kp_iac_ec2" {
   key_name   = "kp_iac_ec2"
-  public_key = "PUT YOUR PUBLIC KEY"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAl5ITdhquvrFrPrNJAOOs9SK2rLOoay1iW1rW6Od58uSHrmv6L59mfGn5qHsinVqVfMhCmIPLsMP6MwZlsUftxqpazvEF+KZEsmHil3+W69YkTnhRjdKVVPtDQ/9B6LchvK2LKovdAQqa2gMCGvQOqMzukLkvnOgdVKAXKlPWcIJ4N1V7r/xtj8g2WaFtqsEnja6wZCzRTQRw+XSOSlF0lpbk+Hm8M9KDa2+xByJsLsMoK8ZxRRSuq0N6BDdDF5ovxIORC0vutGhA9PrOJCdYsLKw2uRnYmkrKo9p1yQXbImyBJJ+bvsr8V3l/21dS0aUKf9ebOU1jSzseSMMTMOxNQ=="
 }
 
 
@@ -25,7 +25,7 @@ resource "aws_instance" "server" {
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.sub_iac_publ[count.index].id
   vpc_security_group_ids = [aws_security_group.sg_vpc_iac_web_server.id]
-  key_name               = "PUT YOUR KEY NAME"
+  key_name               = "kp_iac_ec2"
 
   credit_specification {
     cpu_credits = "standard"
@@ -50,7 +50,7 @@ resource "null_resource" "sync_server" {
     type        = "ssh"
     user        = "ec2-user"
     host        = aws_instance.server[count.index].public_ip
-    private_key = file("PUT THE PATH WHERE YOUR PRIVATE KEY IS IT")
+    private_key = file("keys/kp_privkey_iac_ec2.pem")
   }
 
   provisioner "remote-exec" {
@@ -81,7 +81,7 @@ resource "null_resource" "up_web_app" {
     type        = "ssh"
     user        = "ec2-user"
     host        = aws_instance.server[count.index].public_ip
-    private_key = file("PUT THE PATH WHERE YOUR PRIVATE KEY IS IT")
+    private_key = file("keys/kp_privkey_iac_ec2.pem")
   }
 
 
