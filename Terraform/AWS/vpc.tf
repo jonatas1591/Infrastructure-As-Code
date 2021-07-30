@@ -1,27 +1,4 @@
-#1º criar vpc e bloco de IP
-/*module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
-
-  name = "vpc_terraform"
-  cidr = "11.0.0.0/16"
-
-  azs             = ["us-east-1a", "us-east-1a"]
-  private_subnets = ["11.0.1.0/24", "11.0.2.0/24"]
-  public_subnets  = ["11.0.101.0/24", "11.0.102.0/24"]
-
-  enable_nat_gateway = false
-  enable_vpn_gateway = false
-
-  tags = {
-    Terraform = "true"
-    Environment = "dev"
-  }
-}
-# 2º criar internet gateway
-# 3º atachar vpc to internet ga#
-*/
-
-#Criar VPC
+#To create VPC
 resource "aws_vpc" "vpc_iac" {
   cidr_block                       = "10.7.0.0/16"
   enable_dns_hostnames             = "true"
@@ -32,7 +9,7 @@ resource "aws_vpc" "vpc_iac" {
 }
 
 
-#Criar Subnet
+#To create Subnet
 resource "aws_subnet" "sub_iac_priv" {
   count                   = length(var.private_subnets)
   vpc_id                  = aws_vpc.vpc_iac.id

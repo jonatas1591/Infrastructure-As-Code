@@ -28,6 +28,7 @@ variable "env" {
 
 ####################### EC2 ########################################
 variable "instance_count" {
+  description = "Number of instances to create"
   default = "2"
 }
 
