@@ -1,7 +1,6 @@
 #**Overview**
 
-<p>
-This code create a small and complete infrastructure in AWS to a web server. It create:</p>
+This code create a small and complete infrastructure in AWS to a web server. It create:
 1. VPC and public/private subnets
 2. Security Groups
 3. Instances (You choose the number of instances)
@@ -23,6 +22,9 @@ The main files are:
 
 - [sec_group.tf](sec_group.tf)
     <p>Infrastructure security groups . Allow rules to access the instances and others services.</p>
+
+- [load_balance.tf](load_balance.tf)
+    <p>Create a load balance and attach instances it.</p>
 
 - [outputs.tf](outputs.tf)
     <p>Show information from services such as instance_dns.</p>
