@@ -1,4 +1,4 @@
-#**Overview**
+# **Overview**
 
 This code create a small and complete infrastructure in AWS to a web server. It create:
 1. VPC and public/private subnets
