@@ -6,7 +6,7 @@ Project to IAC. The idea is construct a complete IAC with CI/DI. But, now, I sta
 Gradually, other providers will be added until the complete creation of a CI/DI.
 <br/>
 
-# **Overview**
+# **AWS**
 
 This code create a small and complete infrastructure in AWS to a web server. It create:
 1. VPC and public/private subnets
